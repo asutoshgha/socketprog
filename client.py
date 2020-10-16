@@ -1,12 +1,12 @@
 import socket
-
-HEADERSIZE=2
+import pickle
+HEADERSIZE=10
 s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 s.connect((socket.gethostname(),1234))
 
 while True:
 
-    fullmsg=""
+    fullmsg=b''
     newmsg=True
 
     while True:
@@ -18,12 +18,12 @@ while True:
             print(msglen)
             print("!!")
             newmsg=False
-        fullmsg+=msg.decode("utf-8")
+        fullmsg+=msg
 
         if len(fullmsg)-HEADERSIZE == msglen:
             print("full msg recvd")
-            print(fullmsg[HEADERSIZE:]+"13")
+            print(pickle.loads(fullmsg[HEADERSIZE:]))
             new_msg=True
-            fullmsg=""
+            fullmsg=b''
     print(fullmsg)
     
