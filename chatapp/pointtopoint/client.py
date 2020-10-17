@@ -20,3 +20,4 @@ while True:
         msg_length=int(msg_length)
         msg=client.recv(msg_length).decode(FORMAT)
         print(msg)
+    

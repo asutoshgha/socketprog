@@ -23,6 +23,10 @@ def recieve(conn,addr):
             msg1=input(f"Enter message to send {addr}")
             a=f"{len(msg1):<{Header}}"
             conn.send(a.encode(FORMAT)+msg1.encode(FORMAT))
+        else:
+            msg1=input(f"Enter message to send {addr}")
+            a=f"{len(msg1):<{Header}}"
+            conn.send(a.encode(FORMAT)+msg1.encode(FORMAT))
     conn.close()
 
 def start():
