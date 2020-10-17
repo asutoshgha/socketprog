@@ -12,7 +12,7 @@ while True:
     ha=f"{len(a):<{Header}}".encode(FORMAT)
     a=ha+a.encode(FORMAT)
     client.send(a)
-    if k == "d":
+    if k == "#":
         print("disconnected..")
         break
     msg_length=client.recv(Header).decode(FORMAT)

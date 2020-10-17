@@ -1,17 +1,15 @@
 import socket
 
-Header=64
+Header=200  
 FORMAT='utf-8'
 PORT=5050
 SERVER=socket.gethostbyname(socket.gethostname())
 ADDR=(SERVER,PORT)
 server=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 server.bind(ADDR)
-DISCONNECT_MESSAGE="#"
-
-def isPalindrome(s):
-    return s == s[::-1]
- 
+DISCONNECT_MESSAGE="d"
+def cheakevenodd(num):
+    return num%2 == 0
 def recieve(conn,addr):
     print(f"[new connection] whose addr={addr}")
     connected=True
@@ -23,14 +21,16 @@ def recieve(conn,addr):
             if msg == DISCONNECT_MESSAGE:
                 connected=False
             print(f"[{addr}] {msg}")
-            if(isPalindrome(msg)):
-                ans="true"
-                a=f"{len(ans):<{Header}}"
-                conn.send(a.encode(FORMAT)+ans.upper().encode(FORMAT))
+           # a=f"{len(msg):<{Header}}"
+            msg=int(msg)
+            if(cheakevenodd(msg)):
+                b="yes"
             else:
-                ans="false"
-                a=f"{len(ans):<{Header}}"
-                conn.send(a.encode(FORMAT)+ans.upper().encode(FORMAT))
+                b="no"
+            
+            a=f"{len(b):<{Header}}"
+            conn.send(a.encode(FORMAT)+b.encode(FORMAT))
+            #conn.send(b.encode(FORMAT)+msg1.encode(FORMAT))
     conn.close()
 
 def start():
@@ -40,5 +40,3 @@ def start():
     recieve(conn,addr)
 
 start()
-    
-        
