@@ -20,6 +20,7 @@ def recieve(conn,addr):
             msg=conn.recv(msg_length).decode(FORMAT)
             if msg == DISCONNECT_MESSAGE:
                 connected=False
+                break
             print(f"[{addr}] {msg}")
            # a=f"{len(msg):<{Header}}"
             msg=int(msg)
