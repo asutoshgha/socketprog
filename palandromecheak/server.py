@@ -24,11 +24,11 @@ def recieve(conn,addr):
                 connected=False
             print(f"[{addr}] {msg}")
             if(isPalindrome(msg)):
-                ans="true"
+                ans="yes a palanddrome"
                 a=f"{len(ans):<{Header}}"
                 conn.send(a.encode(FORMAT)+ans.upper().encode(FORMAT))
             else:
-                ans="false"
+                ans="no it is'nt a palandrome"
                 a=f"{len(ans):<{Header}}"
                 conn.send(a.encode(FORMAT)+ans.upper().encode(FORMAT))
     conn.close()
