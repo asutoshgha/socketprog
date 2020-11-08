@@ -32,7 +32,7 @@ USE IP
 
 ## Network Application - 5
 
-cheak wheather a number is even or not
+cheak wheather a number is even or not?
 
 USE IP
 
